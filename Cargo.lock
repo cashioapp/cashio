@@ -237,7 +237,7 @@ checksum = "cdb031dd78e28731d87d56cc8ffef4a8f36ca26c38fe2de700543e627f8a464a"
 
 [[package]]
 name = "bankman"
-version = "0.0.10"
+version = "0.1.0"
 dependencies = [
  "anchor-lang",
  "anchor-spl",
@@ -422,7 +422,7 @@ dependencies = [
 
 [[package]]
 name = "brrr"
-version = "0.0.10"
+version = "0.1.0"
 dependencies = [
  "anchor-lang",
  "anchor-spl",
@@ -494,7 +494,7 @@ checksum = "245097e9a4535ee1e3e3931fcfcd55a796a44c643e8596ff6566d68f09b87bbc"
 
 [[package]]
 name = "converter"
-version = "0.0.1"
+version = "0.1.0"
 dependencies = [
  "stable-swap-math",
 ]

@@ -1,6 +1,6 @@
 [package]
 name = "converter"
-version = "0.0.1"
+version = "0.1.0"
 description = "Math helpers for converting $CASH to/from Saber LP tokens."
 edition = "2018"
 homepage = "https://cashio.app"
