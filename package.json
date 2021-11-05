@@ -1,5 +1,5 @@
 {
-  "name": "@cashioapp/cashio",
+  "name": "@cashio/cashio",
   "version": "0.1.0",
   "description": "cashio is a decentralized stablecoin made for the people, by the people.",
   "main": "dist/cjs/index.js",

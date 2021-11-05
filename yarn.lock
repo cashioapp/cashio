@@ -69,9 +69,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cashioapp/cashio@workspace:.":
+"@cashio/cashio@workspace:.":
   version: 0.0.0-use.local
-  resolution: "@cashioapp/cashio@workspace:."
+  resolution: "@cashio/cashio@workspace:."
   dependencies:
     "@arrowprotocol/arrow": ^0.1.4
     "@crateprotocol/crate-sdk": ^0.3.0
