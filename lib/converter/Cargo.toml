@@ -1,0 +1,17 @@
+[package]
+name = "converter"
+version = "0.0.1"
+description = "Math helpers for converting $CASH to/from Saber LP tokens."
+edition = "2018"
+homepage = "https://cashio.app"
+repository = "https://github.com/cashioapp/cashio"
+authors = ["Ghost Chain <ghost@cashio.app>"]
+license = "AGPL-3.0"
+keywords = ["solana", "cashio", "saber"]
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "converter"
+
+[dependencies]
+stable-swap-math = "1.5.3"
