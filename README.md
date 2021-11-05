@@ -1,6 +1,6 @@
 # cashio
 
-[![License](https://img.shields.io/badge/license-AGPL)](https://github.com/cashioapp/cashio/blob/master/LICENSE.md)
+[![License](https://img.shields.io/crates/l/bankman)](https://github.com/cashioapp/cashio/blob/master/LICENSE.md)
 [![Build Status](https://img.shields.io/github/workflow/status/cashioapp/cashio/E2E/master)](https://github.com/cashioapp/cashio/actions/workflows/programs-e2e.yml?query=branch%3Amaster)
 [![Contributors](https://img.shields.io/github/contributors/cashioapp/cashio)](https://github.com/cashioapp/cashio/graphs/contributors)
 
@@ -14,12 +14,12 @@ We're in active development. For the latest updates, please join our community:
 
 ## Packages
 
-| Package             | Description                                                                     | Version                                                                                                       | Docs                                                                                   |
-| :------------------ | :------------------------------------------------------------------------------ | :------------------------------------------------------------------------------------------------------------ | :------------------------------------------------------------------------------------- |
-| `converter`         | Math helpers for converting $CASH to/from Saber LP tokens.                      | [![Crates.io](https://img.shields.io/crates/v/converter)](https://crates.io/crates/converter)                 | [![Docs.rs](https://docs.rs/converter/badge.svg)](https://docs.rs/converter)           |
-| `brrr`              | Handles the printing and burning of $CASH, using Saber LP Arrows as collateral. | [![Crates.io](https://img.shields.io/crates/v/brrr)](https://crates.io/crates/brrr)                           | [![Docs.rs](https://docs.rs/brrr/badge.svg)](https://docs.rs/brrr)                     |
-| `bankman`           | Allowlist for $CASH collateral tokens.                                          | [![Crates.io](https://img.shields.io/crates/v/bankman)](https://crates.io/crates/bankman)                     | [![Docs.rs](https://docs.rs/bankman/badge.svg)](https://docs.rs/cashio)                |
-| `@cashioapp/cashio` | TypeScript SDK for Cashio                                                       | [![npm](https://img.shields.io/npm/v/@cashioapp/cashio.svg)](https://www.npmjs.com/package/@cashioapp/cashio) | [![Docs](https://img.shields.io/badge/docs-typedoc-blue)](https://docs.cashio.app/ts/) |
+| Package          | Description                                                                     | Version                                                                                                 | Docs                                                                                   |
+| :--------------- | :------------------------------------------------------------------------------ | :------------------------------------------------------------------------------------------------------ | :------------------------------------------------------------------------------------- |
+| `converter`      | Math helpers for converting $CASH to/from Saber LP tokens.                      | [![Crates.io](https://img.shields.io/crates/v/converter)](https://crates.io/crates/converter)           | [![Docs.rs](https://docs.rs/converter/badge.svg)](https://docs.rs/converter)           |
+| `brrr`           | Handles the printing and burning of $CASH, using Saber LP Arrows as collateral. | [![Crates.io](https://img.shields.io/crates/v/brrr)](https://crates.io/crates/brrr)                     | [![Docs.rs](https://docs.rs/brrr/badge.svg)](https://docs.rs/brrr)                     |
+| `bankman`        | Allowlist for $CASH collateral tokens.                                          | [![Crates.io](https://img.shields.io/crates/v/bankman)](https://crates.io/crates/bankman)               | [![Docs.rs](https://docs.rs/bankman/badge.svg)](https://docs.rs/cashio)                |
+| `@cashio/cashio` | TypeScript SDK for Cashio                                                       | [![npm](https://img.shields.io/npm/v/@cashio/cashio.svg)](https://www.npmjs.com/package/@cashio/cashio) | [![Docs](https://img.shields.io/badge/docs-typedoc-blue)](https://docs.cashio.app/ts/) |
 
 ## Note
 
