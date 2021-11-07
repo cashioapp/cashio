@@ -3,6 +3,7 @@
 [![License](https://img.shields.io/crates/l/bankman)](https://github.com/cashioapp/cashio/blob/master/LICENSE.md)
 [![Build Status](https://img.shields.io/github/workflow/status/cashioapp/cashio/E2E/master)](https://github.com/cashioapp/cashio/actions/workflows/programs-e2e.yml?query=branch%3Amaster)
 [![Contributors](https://img.shields.io/github/contributors/cashioapp/cashio)](https://github.com/cashioapp/cashio/graphs/contributors)
+[![Chat](https://img.shields.io/badge/chat-on%20keybase-success)](https://keybase.io/team/cashiochat)
 
 ![Cashio](/images/cashio.png)
 
