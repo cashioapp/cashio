@@ -11,6 +11,7 @@ cashio is a decentralized stablecoin made for the people, by the people.
 We're in active development. For the latest updates, please join our community:
 
 - Twitter: https://twitter.com/cashioapp
+- Keybase: https://keybase.io/team/cashiochat
 
 ## Packages
 
