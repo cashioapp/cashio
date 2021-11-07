@@ -16,7 +16,7 @@ We're in active development. For the latest updates, please join our community:
 
 ## About
 
-Cashio is a decentralized stablecoin fully backed by interest-bearing Saber USD liquidity provider tokens.
+Cashio is a decentralized stablecoin fully backed by interest-bearing [Saber](https://saber.so) USD liquidity provider tokens. Cashio specifically chooses USD LPs that are backed by safer USD assets, attempting to capture the risk-free rate of the Solana stablecoin ecosystem.
 
 Using [Arrow Protocol](https://arrowprotocol.com), Cashio stakes LP tokens into [Sunny Aggregator](https://sunny.ag), earning $SBR and $SUNNY tokens to the Cashio DAO. Cashio also uses [Crate Protocol](https://crateprotocol.com) to build its USD-pegged stablecoin, which can be thought of as a basket of stablecoin LPs.
 
