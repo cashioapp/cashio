@@ -14,6 +14,14 @@ We're in active development. For the latest updates, please join our community:
 - Twitter: https://twitter.com/cashioapp
 - Keybase: https://keybase.io/team/cashiochat
 
+## About
+
+Cashio is a decentralized stablecoin fully backed by interest-bearing Saber USD liquidity provider tokens.
+
+Using [Arrow Protocol](https://arrowprotocol.com), Cashio stakes LP tokens into [Sunny Aggregator](https://sunny.ag), earning $SBR and $SUNNY tokens to the Cashio DAO. Cashio also uses [Crate Protocol](https://crateprotocol.com) to build its USD-pegged stablecoin, which can be thought of as a basket of stablecoin LPs.
+
+_Currently, protocol profits accrue to a program-owned account known as the Bank. We intend to create a mechanism to have these cash flows accrue value to users of the Cashio Protocol. More information on this will be available soon._
+
 ## Packages
 
 | Package          | Description                                                                     | Version                                                                                                 | Docs                                                                                   |
