@@ -1331,13 +1331,12 @@ dependencies = [
 
 [[package]]
 name = "stable-swap-anchor"
-version = "1.5.2"
+version = "1.5.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ec31cee251605352dfb861f07938c91e545dd08ebbf41890b03dfaf18fcbf9a4"
+checksum = "4fc5e809e758f3b5ce9c93b07b837d47cd49f57ee25a5c7eed9ab49563aea7fd"
 dependencies = [
  "anchor-lang",
  "anchor-spl",
- "solana-program",
  "stable-swap-client",
 ]
 
