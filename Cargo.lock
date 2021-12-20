@@ -510,13 +510,14 @@ dependencies = [
 
 [[package]]
 name = "crate-token"
-version = "0.3.0"
+version = "0.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "dc1e4007c935073a96aa2141c460ecf6a8d8efa33174acd4546511c7947b96ab"
+checksum = "9f1ad92bfef2d572d109e6cd52048b39029becc7e40cfb87529a2458d35829a0"
 dependencies = [
  "anchor-lang",
  "anchor-spl",
  "num-traits",
+ "static-pubkey",
  "vipers",
 ]
 
@@ -1368,6 +1369,18 @@ dependencies = [
 ]
 
 [[package]]
+name = "static-pubkey"
+version = "1.0.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e390e1e75910fd6c02265a4743f06c85775bb357c70f58384e867b3dc84a8011"
+dependencies = [
+ "bs58 0.4.0",
+ "proc-macro2",
+ "quote",
+ "syn",
+]
+
+[[package]]
 name = "static_assertions"
 version = "1.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1494,9 +1507,9 @@ checksum = "5fecdca9a5291cc2b8dcf7dc02453fee791a280f3743cb0905f8822ae463b3fe"
 
 [[package]]
 name = "vipers"
-version = "1.4.0"
+version = "1.5.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "acd0093f01aedc6999cfa99ef5fe45cf28b105f76c19a28d821c6739fc81fa4d"
+checksum = "344716a0a37af7570a1402541e48b42a09def1d453c031aefcd05944d2c4488c"
 dependencies = [
  "anchor-lang",
  "anchor-spl",
