@@ -204,9 +204,9 @@ checksum = "23b62fc65de8e4e7f52534fb52b0f3ed04746ae267519eef2a83941e8085068b"
 
 [[package]]
 name = "arrow-sunny"
-version = "0.1.2"
+version = "0.1.8"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8a5307879639cad6009cf0d27582cdffd590314d0585efbc82f4911e452e6c13"
+checksum = "264cae71a8c5e4eb2a9f83fb66a416fa6a09e96398eef3afc6e918878172f95b"
 dependencies = [
  "anchor-lang",
  "anchor-spl",
@@ -1494,9 +1494,9 @@ checksum = "5fecdca9a5291cc2b8dcf7dc02453fee791a280f3743cb0905f8822ae463b3fe"
 
 [[package]]
 name = "vipers"
-version = "1.4.0"
+version = "1.5.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "acd0093f01aedc6999cfa99ef5fe45cf28b105f76c19a28d821c6739fc81fa4d"
+checksum = "344716a0a37af7570a1402541e48b42a09def1d453c031aefcd05944d2c4488c"
 dependencies = [
  "anchor-lang",
  "anchor-spl",
