@@ -209,9 +209,9 @@ checksum = "8da52d66c7071e2e3fa2a1e5c6d088fec47b593032b254f5e980de8ea54454d6"
 
 [[package]]
 name = "arrow-sunny"
-version = "0.1.8"
+version = "0.1.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "264cae71a8c5e4eb2a9f83fb66a416fa6a09e96398eef3afc6e918878172f95b"
+checksum = "50916547316b8dfc22bccca91378b8620cc8431290bbb50f65f63e425f248437"
 dependencies = [
  "anchor-lang",
  "anchor-spl",
@@ -219,6 +219,7 @@ dependencies = [
  "quarry-mine",
  "quarry-mint-wrapper",
  "spl-associated-token-account",
+ "static-pubkey",
  "sunny-anchor",
  "vipers",
 ]
