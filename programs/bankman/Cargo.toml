@@ -7,7 +7,7 @@ homepage = "https://cashio.app"
 repository = "https://github.com/CashioApp/cashio"
 authors = ["Ghost Chain <ghost@cashio.app>"]
 license = "AGPL-3.0"
-keywords = ["solana", "anchor", "arrow", "crate", "sunny", "cashio", "saber"]
+keywords = ["solana", "anchor", "crate", "cashio", "saber"]
 
 [lib]
 crate-type = ["cdylib", "lib"]
