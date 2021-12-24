@@ -324,7 +324,7 @@ export class CashioSDK {
         : []),
       this.programs.Brrr.instruction.printCash(collateralAmount.toU64(), {
         accounts: {
-          common: await this.getCommonSwapAccounts({
+          common: await this._getCommonSwapAccounts({
             bank: {
               key: bankKey,
               data: bank,
@@ -392,7 +392,7 @@ export class CashioSDK {
       ...burnerATAs.instructions,
       this.programs.Brrr.instruction.burnCash(cashAmount.toU64(), {
         accounts: {
-          common: await this.getCommonSwapAccounts({
+          common: await this._getCommonSwapAccounts({
             bank: {
               key: bankKey,
               data: bank,
@@ -427,7 +427,7 @@ export class CashioSDK {
     });
   }
 
-  private async getCommonSwapAccounts({
+  private async _getCommonSwapAccounts({
     bank: { key: bankKey, data: bankData },
     swap,
     arrowMint,

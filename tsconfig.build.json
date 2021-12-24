@@ -1,12 +1,8 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    "types": [],
     "noEmit": false,
-    "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true,
-    "inlineSources": true,
-    "importHelpers": true,
     "outDir": "dist/cjs/"
   },
   "include": ["src/"],
