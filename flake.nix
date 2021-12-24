@@ -14,9 +14,8 @@
       "x86_64-darwin"
     ] (system:
       let
-        pkgs = import nixpkgs {
-          inherit system;
-        } // saber-overlay.packages.${system};
+        pkgs = import nixpkgs { inherit system; }
+          // saber-overlay.packages.${system};
       in {
         devShell = import ./shell.nix { inherit pkgs; };
         packages.ci = import ./ci.nix { inherit pkgs; };
