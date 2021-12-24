@@ -16,7 +16,7 @@
   "homepage": "https://cashio.app",
   "license": "AGPL-3.0",
   "devDependencies": {
-    "@arrowprotocol/arrow": "^0.1.8",
+    "@arrowprotocol/arrow": "^0.1.9",
     "@crateprotocol/crate-sdk": "^0.4.0",
     "@project-serum/anchor": "^0.19.1-beta.1",
     "@quarryprotocol/quarry-sdk": "^1.11.3",

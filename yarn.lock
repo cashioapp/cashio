@@ -5,21 +5,21 @@ __metadata:
   version: 5
   cacheKey: 8
 
-"@arrowprotocol/arrow@npm:^0.1.8":
-  version: 0.1.8
-  resolution: "@arrowprotocol/arrow@npm:0.1.8"
+"@arrowprotocol/arrow@npm:^0.1.9":
+  version: 0.1.9
+  resolution: "@arrowprotocol/arrow@npm:0.1.9"
   dependencies:
     tiny-invariant: ^1.2.0
     tslib: ^2.3.1
   peerDependencies:
     "@project-serum/anchor": ^0.19.0
     "@quarryprotocol/quarry-sdk": ^1.11.0
-    "@saberhq/anchor-contrib": ^1.10.16
-    "@saberhq/solana-contrib": ^1.10.16
-    "@saberhq/token-utils": ^1.10.16
+    "@saberhq/anchor-contrib": ^1.11
+    "@saberhq/solana-contrib": ^1.11
+    "@saberhq/token-utils": ^1.11
     "@solana/web3.js": ^1.29.2
     bn.js: "*"
-  checksum: 6c7467af4a9611b1f1fb4611f62de7dd90c41201999d0bc220e580e8aa4c4ceaf623cde8626b030f1899cc482f64dd13ed4122e7bd024060a309d685865a7967
+  checksum: 6ad40b16b03dba13a0c6afc999c73a8a48d57e3a2cc29550d25e57f1004aa570040465464cacb5ef3729e09103c9409338f78e4415a35c34bb24751aa064fa51
   languageName: node
   linkType: hard
 
@@ -36,7 +36,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@cashio/cashio@workspace:."
   dependencies:
-    "@arrowprotocol/arrow": ^0.1.8
+    "@arrowprotocol/arrow": ^0.1.9
     "@crateprotocol/crate-sdk": ^0.4.0
     "@project-serum/anchor": ^0.19.1-beta.1
     "@quarryprotocol/quarry-sdk": ^1.11.3
