@@ -8,8 +8,8 @@ on:
 
 env:
   CARGO_TERM_COLOR: always
-  SOLANA_VERSION: "1.7.11"
-  RUST_TOOLCHAIN: nightly-2021-10-01
+  SOLANA_VERSION: "1.8.11"
+  RUST_TOOLCHAIN: nightly-2021-12-23
 
 jobs:
   sdk:
@@ -35,14 +35,18 @@ jobs:
 
       - name: Setup Node
         uses: actions/setup-node@v2
-        with:
-          always-auth: true
-          node-version: "16"
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
       - name: Yarn Cache
         uses: actions/cache@v2
         with:
-          path: ./.yarn
-          key: ${{ runner.os }}-${{ hashFiles('./.yarn/**/*.js') }}
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-modules-
+
       - name: Install Yarn dependencies
         run: yarn install
       - run: ./scripts/generate-idl-types.sh
@@ -69,22 +73,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y pkg-config build-essential libudev-dev
 
-      # Install Solana
-      - name: Cache Solana binaries
-        uses: actions/cache@v2
-        with:
-          path: ~/.cache/solana
-          key: ${{ runner.os }}-${{ env.SOLANA_VERSION }}
-      - name: Install Solana
-        run: |
-          sh -c "$(curl -sSfL https://release.solana.com/v${{ env.SOLANA_VERSION }}/install)"
-          echo "$HOME/.local/share/solana/install/active_release/bin" >> $GITHUB_PATH
-          export PATH="/home/runner/.local/share/solana/install/active_release/bin:$PATH"
-          solana --version
-          echo "Generating keypair..."
-          solana-keygen new -o "$HOME/.config/solana/id.json" --no-passphrase --silent
-
-      # Run build
+      # Install Nix
       - uses: cachix/install-nix-action@v14
         with:
           install_url: https://nixos-nix-install-tests.cachix.org/serve/i6laym9jw3wg9mw6ncyrk6gjx4l34vvx/install
@@ -97,18 +86,43 @@ jobs:
           name: cash
           extraPullNames: quarry, saber
           authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+
+      # Install Solana
+      - name: Cache Solana binaries
+        id: solana-cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.cache/solana
+            ~/.local/share/solana/install
+          key: ${{ runner.os }}-${{ env.SOLANA_VERSION }}
+      - name: Install Solana
+        if: steps.solana-cache.outputs.cache-hit != 'true'
+        run: |
+          nix shell .#ci --command solana-install init ${{ env.SOLANA_VERSION }}
+      - name: Setup Solana Path
+        run: |
+          echo "$HOME/.local/share/solana/install/active_release/bin" >> $GITHUB_PATH
+          export PATH="/home/runner/.local/share/solana/install/active_release/bin:$PATH"
+          solana --version
+
+      # Run build
       - name: Build program
         run: nix shell .#ci --command anchor build
 
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
       - name: Yarn Cache
         uses: actions/cache@v2
         with:
-          path: ./.yarn
-          key: ${{ runner.os }}-${{ hashFiles('./.yarn/**/*.js') }}
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-modules-
+
       - name: Setup Node
         uses: actions/setup-node@v2
-        with:
-          node-version: "16"
       - run: yarn install
       - name: Generate IDL types
         run: nix shell .#ci --command yarn idl:generate:nolint

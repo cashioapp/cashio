@@ -2,16 +2,11 @@
 #![deny(missing_docs)]
 
 use anchor_lang::prelude::*;
-
-/// Issue authority address.
-mod issue_authority {
-    use anchor_lang::declare_id;
-
-    declare_id!("BJ9L3jNu6tvrUxPHTMfwyA8Lgw2X6ky5bVNyDqiXSxgA");
-}
+use anchor_lang::solana_program;
 
 /// Address of the issue authority to use for this Crate.
-pub static ISSUE_AUTHORITY_ADDRESS: Pubkey = issue_authority::ID;
+pub static ISSUE_AUTHORITY_ADDRESS: Pubkey =
+    static_pubkey::static_pubkey!("BJ9L3jNu6tvrUxPHTMfwyA8Lgw2X6ky5bVNyDqiXSxgA");
 
 /// Bump seed of the above address.
 pub const ISSUE_AUTHORITY_ADDRESS_BUMP: u8 = 255;
@@ -20,15 +15,9 @@ pub const ISSUE_AUTHORITY_ADDRESS_BUMP: u8 = 255;
 pub static ISSUE_AUTHORITY_SIGNER_SEEDS: &[&[&[u8]]] =
     &[&[b"print", &[ISSUE_AUTHORITY_ADDRESS_BUMP]]];
 
-/// Withdraw authority address.
-mod withdraw_authority {
-    use anchor_lang::declare_id;
-
-    declare_id!("7Twx9JYz3gB4rF3h2cyUMnQWj9QEtmwviTvVD7xjAGEw");
-}
-
 /// Address of the withdraw authority to use for this Crate.
-pub static WITHDRAW_AUTHORITY_ADDRESS: Pubkey = withdraw_authority::ID;
+pub static WITHDRAW_AUTHORITY_ADDRESS: Pubkey =
+    static_pubkey::static_pubkey!("7Twx9JYz3gB4rF3h2cyUMnQWj9QEtmwviTvVD7xjAGEw");
 
 /// Bump seed of the above address.
 pub const WITHDRAW_AUTHORITY_ADDRESS_BUMP: u8 = 255;

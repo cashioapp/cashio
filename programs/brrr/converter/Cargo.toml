@@ -2,7 +2,7 @@
 name = "converter"
 version = "0.1.0"
 description = "Math helpers for converting $CASH to/from Saber LP tokens."
-edition = "2018"
+edition = "2021"
 homepage = "https://cashio.app"
 repository = "https://github.com/cashioapp/cashio"
 authors = ["Ghost Chain <ghost@cashio.app>"]
@@ -14,4 +14,4 @@ crate-type = ["cdylib", "lib"]
 name = "converter"
 
 [dependencies]
-stable-swap-math = "1.5.3"
+stable-swap-math = "^1.5"

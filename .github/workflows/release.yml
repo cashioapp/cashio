@@ -8,8 +8,8 @@ on:
 
 env:
   CARGO_TERM_COLOR: always
-  SOLANA_VERSION: "1.7.11"
-  RUST_TOOLCHAIN: nightly-2021-10-01
+  SOLANA_VERSION: "1.8.11"
+  RUST_TOOLCHAIN: nightly-2021-12-23
   NPM_PUBLISH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
 
 jobs:
@@ -31,17 +31,20 @@ jobs:
           name: cash
           extraPullNames: quarry, saber
           authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
-
       - name: Setup Node
         uses: actions/setup-node@v2
-        with:
-          always-auth: true
-          node-version: 14.x
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
       - name: Yarn Cache
         uses: actions/cache@v2
         with:
-          path: ./.yarn
-          key: ${{ runner.os }}-${{ hashFiles('./.yarn/**/*.js') }}
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-modules-
+
       - name: Install Yarn dependencies
         run: yarn install
       - name: Parse IDLs
@@ -64,10 +67,22 @@ jobs:
           profile: minimal
           toolchain: ${{ env.RUST_TOOLCHAIN }}
       - uses: Swatinem/rust-cache@v1
-      - name: Install cargo-workspaces
-        run: cargo install cargo-workspaces || true
+
+      - uses: cachix/install-nix-action@v14
+        with:
+          install_url: https://nixos-nix-install-tests.cachix.org/serve/i6laym9jw3wg9mw6ncyrk6gjx4l34vvx/install
+          install_options: "--tarball-url-prefix https://nixos-nix-install-tests.cachix.org/serve"
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+      - name: Setup Cachix
+        uses: cachix/cachix-action@v10
+        with:
+          name: cash
+          extraPullNames: quarry, saber
+          authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+
       - name: Publish crates
-        run: cargo ws publish --from-git --yes --skip-published --token ${{ secrets.CARGO_PUBLISH_TOKEN }}
+        run: nix shell .#ci --command cargo ws publish --from-git --yes --skip-published --token ${{ secrets.CARGO_PUBLISH_TOKEN }}
 
   release-binaries:
     runs-on: ubuntu-latest
@@ -96,3 +111,46 @@ jobs:
             target/deploy/*
             target/idl/*
             target/verifiable/*
+
+  site:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - uses: cachix/install-nix-action@v14
+        with:
+          install_url: https://nixos-nix-install-tests.cachix.org/serve/i6laym9jw3wg9mw6ncyrk6gjx4l34vvx/install
+          install_options: "--tarball-url-prefix https://nixos-nix-install-tests.cachix.org/serve"
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+      - name: Setup Cachix
+        uses: cachix/cachix-action@v10
+        with:
+          name: cash
+          extraPullNames: quarry, saber
+          authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
+      - name: Yarn Cache
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-modules-
+
+      - name: Install Yarn dependencies
+        run: yarn install
+      - name: Parse IDLs
+        run: nix shell .#ci --command yarn idl:generate
+      - run: yarn docs:generate
+      - run: cp -R images/ site/
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.5
+        with:
+          branch: gh-pages
+          folder: site

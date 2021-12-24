@@ -1,5 +1,3 @@
-import "chai-bn";
-
 import { BN, EventParser } from "@project-serum/anchor";
 import { expectTX } from "@saberhq/chai-solana";
 import type { StableSwap } from "@saberhq/stableswap-sdk";
