@@ -28,4 +28,4 @@ stable-swap-anchor = "1.5.2"
 static-pubkey = "1.0.2"
 vipers = "^1.5"
 bankman = { path = "../bankman", version = "0.1.0", features = ["cpi"] }
-converter = { path = "../../lib/converter", version = "0.1.0" }
+converter = { path = "./converter", version = "0.1.0" }
