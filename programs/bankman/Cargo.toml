@@ -1,6 +1,6 @@
 [package]
 name = "bankman"
-version = "0.1.3"
+version = "0.1.4"
 description = "Allowlist for $CASH collateral tokens."
 edition = "2021"
 homepage = "https://cashio.app"
