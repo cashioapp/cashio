@@ -9,20 +9,20 @@ solana program dump SSwpkEEcbUqx4vtoEByFjSkhKdCT862DNVb52nZg1UZ \
     artifacts/programs/stable_swap.so --url mainnet-beta
 
 # crate
-solana program dump CRATwLpu6YZEeiVq9ajjxs61wPQ9f29s1UoQR9siJCRs \
-    artifacts/programs/crate_token.so --url mainnet-beta
+curl -L https://github.com/CrateProtocol/crate/releases/download/v0.4.0/crate_token.so > \
+    artifacts/programs/crate_token.so
 
 # arrow
-solana program dump ARoWLTBWoWrKMvxEiaE2EH9DrWyV7mLpKywGDWxBGeq9 \
-    artifacts/programs/arrow_sunny.so --url mainnet-beta
+curl -L https://github.com/ArrowProtocol/arrow/releases/download/v0.1.8/arrow_sunny.so > \
+    artifacts/programs/arrow_sunny.so
 
 # sunny
 solana program dump SPQR4kT3q2oUKEJes2L6NNSBCiPW9SfuhkuqC9bp6Sx \
     artifacts/programs/sunny.so --url mainnet-beta
 
 # quarry
-solana program dump QMNeHCGYnLVDn1icRAfQZpjPLBNkfGbSKRB83G5d8KB \
-    artifacts/programs/quarry_mine.so --url mainnet-beta
+curl -L https://github.com/QuarryProtocol/quarry/releases/download/v1.11.3/quarry_mine.so > \
+    artifacts/programs/quarry_mine.so
 
-solana program dump QMWoBmAyJLAsA1Lh9ugMTw2gciTihncciphzdNzdZYV \
-    artifacts/programs/quarry_mint_wrapper.so --url mainnet-beta
+curl -L https://github.com/QuarryProtocol/quarry/releases/download/v1.11.3/quarry_mint_wrapper.so > \
+    artifacts/programs/quarry_mint_wrapper.so

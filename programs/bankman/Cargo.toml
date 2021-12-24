@@ -2,12 +2,12 @@
 name = "bankman"
 version = "0.1.0"
 description = "Allowlist for $CASH collateral tokens."
-edition = "2018"
+edition = "2021"
 homepage = "https://cashio.app"
 repository = "https://github.com/CashioApp/cashio"
 authors = ["Ghost Chain <ghost@cashio.app>"]
 license = "AGPL-3.0"
-keywords = ["solana", "cashio", "saber"]
+keywords = ["solana", "anchor", "arrow", "crate", "sunny", "cashio", "saber"]
 
 [lib]
 crate-type = ["cdylib", "lib"]
@@ -22,5 +22,5 @@ default = []
 [dependencies]
 anchor-lang = ">=0.17.0"
 anchor-spl = ">=0.17.0"
-crate-token = { version = "0.3.0", features = ["cpi"] }
-vipers = "1.3.0"
+crate-token = { version = "^0.4", features = ["cpi"] }
+vipers = "^1.5"

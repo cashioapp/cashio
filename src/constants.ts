@@ -1,5 +1,4 @@
-import { Token } from "@saberhq/token-utils";
-import { ENV } from "@solana/spl-token-registry";
+import { ENV, Token } from "@saberhq/token-utils";
 import { PublicKey } from "@solana/web3.js";
 
 export const CASHIO_ADDRESSES = {

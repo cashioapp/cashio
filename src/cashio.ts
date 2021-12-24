@@ -52,17 +52,14 @@ export class CashioSDK {
   /**
    * Reference to the Crate SDK.
    */
-  public readonly crate: CrateSDK;
+  readonly crate: CrateSDK;
 
   /**
    * Reference to Arrow Protocol.
    */
-  public readonly arrow: Arrow;
+  readonly arrow: Arrow;
 
-  constructor(
-    public readonly provider: Provider,
-    public readonly programs: CashioPrograms
-  ) {
+  constructor(readonly provider: Provider, readonly programs: CashioPrograms) {
     this.crate = CrateSDK.init(provider);
     this.arrow = Arrow.init(provider);
   }
@@ -95,7 +92,7 @@ export class CashioSDK {
   /**
    * Creates a new instance of the SDK with the given keypair.
    */
-  public withSigner(signer: Signer): CashioSDK {
+  withSigner(signer: Signer): CashioSDK {
     return CashioSDK.init(
       new SolanaProvider(
         this.provider.connection,
