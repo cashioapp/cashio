@@ -1364,9 +1364,9 @@ dependencies = [
 
 [[package]]
 name = "stable-swap-math"
-version = "1.5.5"
+version = "1.6.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "cd92870183485b8aa011dca760e66f506078c02528ebb36feffc491159232649"
+checksum = "3180b400f52a5d9c05f83f79559924811193645969cff0bc6d4f8937e49cffc6"
 dependencies = [
  "borsh 0.9.1",
  "num-traits",
