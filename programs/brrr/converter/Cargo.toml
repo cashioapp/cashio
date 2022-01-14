@@ -14,4 +14,4 @@ crate-type = ["cdylib", "lib"]
 name = "converter"
 
 [dependencies]
-stable-swap-math = "^1.5"
+stable-swap-math = "^1.6"
