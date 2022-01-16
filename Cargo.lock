@@ -557,9 +557,9 @@ dependencies = [
 
 [[package]]
 name = "crate-token"
-version = "0.4.0"
+version = "0.4.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9f1ad92bfef2d572d109e6cd52048b39029becc7e40cfb87529a2458d35829a0"
+checksum = "7760d4e459b24f4314790a5f0d677a15a51e4b889ea30791542b5772334413d1"
 dependencies = [
  "anchor-lang",
  "anchor-spl",
