@@ -1339,12 +1339,11 @@ dependencies = [
 
 [[package]]
 name = "stable-swap-anchor"
-version = "1.6.7"
+version = "1.6.8"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f311c70841ff4a6a6c77219addce9a8b4226f48abe3d7f6c8e05622aa96bf5c4"
+checksum = "dc17dafa526ed8c9443cb33206bca24013ac2f0cb7e4fb405b3a90cdc83b02ff"
 dependencies = [
  "anchor-lang",
- "anchor-spl",
  "stable-swap-client",
 ]
 
