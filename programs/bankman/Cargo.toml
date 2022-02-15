@@ -23,4 +23,4 @@ default = []
 anchor-lang = ">=0.17.0"
 anchor-spl = ">=0.17.0"
 crate-token = { version = "^0.4", features = ["cpi"] }
-vipers = "^1.5"
+vipers = "^1.6"
