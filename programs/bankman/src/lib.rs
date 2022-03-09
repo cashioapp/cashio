@@ -207,7 +207,7 @@ pub struct AuthorizeCollateral<'info> {
     #[account(
         init,
         seeds = [
-            b"Collateral",
+            b"Collateral".as_ref(),
             bank.key().to_bytes().as_ref(),
             mint.key().to_bytes().as_ref()
         ],

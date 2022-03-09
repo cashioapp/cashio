@@ -1,6 +1,9 @@
 anchor_version = "0.22.1"
 solana_version = "1.9.9"
 
+[features]
+seeds = true
+
 [registry]
 url = "https://anchor.projectserum.com"
 
