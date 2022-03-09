@@ -7,8 +7,8 @@ mod events;
 mod state;
 
 use anchor_lang::prelude::*;
-use vipers::prelude::*;
 use anchor_spl::token::Mint;
+use vipers::prelude::*;
 
 pub use events::*;
 pub use state::*;
