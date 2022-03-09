@@ -58,14 +58,14 @@
     "prepare": "husky install"
   },
   "peerDependencies": {
-    "@arrowprotocol/arrow": "^0.1.8",
-    "@crateprotocol/crate-sdk": "^0.3.0",
-    "@project-serum/anchor": "^0.19",
-    "@quarryprotocol/quarry-sdk": "^1.10.0",
-    "@saberhq/anchor-contrib": "^1.11",
-    "@saberhq/solana-contrib": "^1.11",
-    "@saberhq/stableswap-sdk": "^1.4.1",
-    "@saberhq/token-utils": "^1.11",
+    "@arrowprotocol/arrow": "^0.2",
+    "@crateprotocol/crate-sdk": "^0.5",
+    "@project-serum/anchor": "^0.22",
+    "@quarryprotocol/quarry-sdk": "^3",
+    "@saberhq/anchor-contrib": "^1.12",
+    "@saberhq/solana-contrib": "^1.12",
+    "@saberhq/stableswap-sdk": "^1.12",
+    "@saberhq/token-utils": "^1.12",
     "@solana/web3.js": "^1.29.2",
     "bn.js": "^5.2.0"
   },
