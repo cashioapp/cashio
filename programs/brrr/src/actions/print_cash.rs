@@ -6,12 +6,12 @@ use converter::CashSwap;
 use vipers::{assert_keys_eq, unwrap_int, validate::Validate};
 
 /// Prints $CASH.
-pub fn print_cash(ctx: Context<PrintCash>, deposit_amount: u64) -> ProgramResult {
+pub fn print_cash(ctx: Context<PrintCash>, deposit_amount: u64) -> Result<()> {
     ctx.accounts.print_cash(deposit_amount)
 }
 
 impl<'info> PrintCash<'info> {
-    fn print_cash(&self, deposit_amount: u64) -> ProgramResult {
+    fn print_cash(&self, deposit_amount: u64) -> Result<()> {
         let current_balance = self.common.crate_collateral_tokens.amount;
         require!(
             unwrap_int!(current_balance.checked_add(deposit_amount))
@@ -72,7 +72,7 @@ impl<'info> PrintCash<'info> {
 }
 
 impl<'info> Validate<'info> for PrintCash<'info> {
-    fn validate(&self) -> ProgramResult {
+    fn validate(&self) -> Result<()> {
         self.common.validate()?;
         assert_keys_eq!(self.depositor, self.depositor_source.owner);
         assert_keys_eq!(self.depositor_source.mint, self.common.collateral.mint);
