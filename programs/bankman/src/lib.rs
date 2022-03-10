@@ -175,12 +175,14 @@ pub struct NewBank<'info> {
 
     /// The [crate_token::CrateToken] to be created.
     #[account(mut)]
-    pub crate_token: UncheckedAccount<'info>,
+    pub crate_token: SystemAccount<'info>,
 
     /// The `brrr_issue_authority`.
+    /// CHECK: Arbitrary.
     pub brrr_issue_authority: UncheckedAccount<'info>,
 
     /// The `burn_withdraw_authority`.
+    /// CHECK: Arbitrary.
     pub burn_withdraw_authority: UncheckedAccount<'info>,
 
     /// Payer of the crate initialization.
@@ -188,6 +190,7 @@ pub struct NewBank<'info> {
     pub payer: Signer<'info>,
 
     /// The admin, who becomes the curator and the curator setter.
+    /// CHECK: Arbitrary.
     pub admin: UncheckedAccount<'info>,
 
     /// System program.
@@ -251,6 +254,7 @@ pub struct SetCurator<'info> {
     /// The [Bank::bankman].
     pub bankman: Signer<'info>,
     /// The [Bank::curator] to set.
+    /// CHECK: Arbitrary.
     pub next_curator: UncheckedAccount<'info>,
 }
 
@@ -263,6 +267,7 @@ pub struct SetBankman<'info> {
     /// The [Bank::bankman].
     pub bankman: Signer<'info>,
     /// The [Bank::curator] to set.
+    /// CHECK: Arbitrary.
     pub next_bankman: UncheckedAccount<'info>,
 }
 

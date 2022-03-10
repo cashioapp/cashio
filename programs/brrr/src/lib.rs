@@ -85,6 +85,7 @@ pub struct PrintCash<'info> {
     pub mint_destination: Box<Account<'info, TokenAccount>>,
 
     /// The [ISSUE_AUTHORITY_ADDRESS].
+    /// CHECK: this is handled by Vipers.
     pub issue_authority: UncheckedAccount<'info>,
 }
 
@@ -144,6 +145,7 @@ pub struct BurnCash<'info> {
     pub protocol_fee_destination: Account<'info, TokenAccount>,
 
     /// The [WITHDRAW_AUTHORITY_ADDRESS].
+    /// CHECK: this is handled by Vipers.
     pub withdraw_authority: UncheckedAccount<'info>,
 }
 
