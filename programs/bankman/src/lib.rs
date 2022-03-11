@@ -8,7 +8,7 @@ mod state;
 
 use anchor_lang::prelude::*;
 use anchor_spl::token::Mint;
-use vipers::validate::Validate;
+use vipers::prelude::*;
 
 pub use events::*;
 pub use state::*;
@@ -25,7 +25,7 @@ pub mod bankman {
 
     /// Provisions a new [Bank].
     #[access_control(ctx.accounts.validate())]
-    pub fn new_bank(ctx: Context<NewBank>, bank_bump: u8, crate_bump: u8) -> ProgramResult {
+    pub fn new_bank(ctx: Context<NewBank>, _bank_bump: u8, crate_bump: u8) -> Result<()> {
         crate_token::cpi::new_crate(
             CpiContext::new(
                 ctx.accounts.crate_token_program.to_account_info(),
@@ -44,6 +44,7 @@ pub mod bankman {
             crate_bump,
         )?;
 
+        let bank_bump = unwrap_bump!(ctx, "bank");
         let signer_seeds: &[&[&[u8]]] = &[&[
             b"Bank".as_ref(),
             &ctx.accounts.crate_token.key().to_bytes(),
@@ -82,13 +83,13 @@ pub mod bankman {
 
     /// Adds a new collateral pool to a [Bank].
     #[access_control(ctx.accounts.validate())]
-    pub fn authorize_collateral(ctx: Context<AuthorizeCollateral>, bump: u8) -> ProgramResult {
+    pub fn authorize_collateral(ctx: Context<AuthorizeCollateral>, _bump: u8) -> Result<()> {
         let bank = &ctx.accounts.bank;
 
         let collateral = &mut ctx.accounts.collateral;
         collateral.bank = bank.key();
         collateral.mint = ctx.accounts.mint.key();
-        collateral.bump = bump;
+        collateral.bump = unwrap_bump!(ctx, "collateral");
 
         emit!(AddCollateralEvent {
             bank: bank.key(),
@@ -105,7 +106,7 @@ pub mod bankman {
     pub fn set_collateral_hard_cap(
         ctx: Context<SetCollateralHardCap>,
         hard_cap: u64,
-    ) -> ProgramResult {
+    ) -> Result<()> {
         let collateral = &mut ctx.accounts.collateral;
         collateral.hard_cap = hard_cap;
 
@@ -120,7 +121,7 @@ pub mod bankman {
 
     /// Sets the curator.
     #[access_control(ctx.accounts.validate())]
-    pub fn set_curator(ctx: Context<SetCurator>) -> ProgramResult {
+    pub fn set_curator(ctx: Context<SetCurator>) -> Result<()> {
         let bank = &mut ctx.accounts.bank;
         let previous_curator = bank.curator;
         bank.curator = ctx.accounts.next_curator.key();
@@ -138,7 +139,7 @@ pub mod bankman {
 
     /// Sets the bankman.
     #[access_control(ctx.accounts.validate())]
-    pub fn set_bankman(ctx: Context<SetBankman>) -> ProgramResult {
+    pub fn set_bankman(ctx: Context<SetBankman>) -> Result<()> {
         let bank = &mut ctx.accounts.bank;
         let previous_bankman = bank.bankman;
         bank.bankman = ctx.accounts.next_bankman.key();
@@ -156,7 +157,6 @@ pub mod bankman {
 
 /// Accounts for [bankman::new_bank].
 #[derive(Accounts)]
-#[instruction(bump: u8)]
 pub struct NewBank<'info> {
     /// Information about the [Bank].
     #[account(
@@ -165,7 +165,7 @@ pub struct NewBank<'info> {
             b"Bank".as_ref(),
             crate_token.key().to_bytes().as_ref()
         ],
-        bump = bump,
+        bump,
         payer = payer
     )]
     pub bank: Account<'info, Bank>,
@@ -175,12 +175,14 @@ pub struct NewBank<'info> {
 
     /// The [crate_token::CrateToken] to be created.
     #[account(mut)]
-    pub crate_token: UncheckedAccount<'info>,
+    pub crate_token: SystemAccount<'info>,
 
     /// The `brrr_issue_authority`.
+    /// CHECK: Arbitrary.
     pub brrr_issue_authority: UncheckedAccount<'info>,
 
     /// The `burn_withdraw_authority`.
+    /// CHECK: Arbitrary.
     pub burn_withdraw_authority: UncheckedAccount<'info>,
 
     /// Payer of the crate initialization.
@@ -188,6 +190,7 @@ pub struct NewBank<'info> {
     pub payer: Signer<'info>,
 
     /// The admin, who becomes the curator and the curator setter.
+    /// CHECK: Arbitrary.
     pub admin: UncheckedAccount<'info>,
 
     /// System program.
@@ -199,7 +202,6 @@ pub struct NewBank<'info> {
 
 /// Accounts for [bankman::authorize_collateral].
 #[derive(Accounts)]
-#[instruction(bump: u8)]
 pub struct AuthorizeCollateral<'info> {
     /// The [Bank].
     pub bank: Account<'info, Bank>,
@@ -208,11 +210,11 @@ pub struct AuthorizeCollateral<'info> {
     #[account(
         init,
         seeds = [
-            b"Collateral",
+            b"Collateral".as_ref(),
             bank.key().to_bytes().as_ref(),
             mint.key().to_bytes().as_ref()
         ],
-        bump = bump,
+        bump,
         payer = payer
     )]
     pub collateral: Account<'info, Collateral>,
@@ -252,6 +254,7 @@ pub struct SetCurator<'info> {
     /// The [Bank::bankman].
     pub bankman: Signer<'info>,
     /// The [Bank::curator] to set.
+    /// CHECK: Arbitrary.
     pub next_curator: UncheckedAccount<'info>,
 }
 
@@ -264,11 +267,12 @@ pub struct SetBankman<'info> {
     /// The [Bank::bankman].
     pub bankman: Signer<'info>,
     /// The [Bank::curator] to set.
+    /// CHECK: Arbitrary.
     pub next_bankman: UncheckedAccount<'info>,
 }
 
 /// Errors.
-#[error]
+#[error_code]
 pub enum ErrorCode {
     #[msg("Must be curator.")]
     UnauthorizedNotCurator,

@@ -6,13 +6,13 @@ use converter::CashSwap;
 use vipers::{assert_keys_eq, unwrap_int, validate::Validate};
 
 /// Prints $CASH.
-pub fn burn_cash(ctx: Context<BurnCash>, burn_amount: u64) -> ProgramResult {
+pub fn burn_cash(ctx: Context<BurnCash>, burn_amount: u64) -> Result<()> {
     ctx.accounts.burn_cash(burn_amount)
 }
 
 impl<'info> BurnCash<'info> {
     /// We like the $CASH.
-    fn burn_cash(&self, burn_amount: u64) -> ProgramResult {
+    fn burn_cash(&self, burn_amount: u64) -> Result<()> {
         let swap: CashSwap = (&self.common.saber_swap).try_into()?;
         let withdraw_pool_token_amount =
             unwrap_int!(swap.calculate_pool_tokens_for_cash(burn_amount));
@@ -62,7 +62,7 @@ impl<'info> BurnCash<'info> {
 }
 
 impl<'info> Validate<'info> for BurnCash<'info> {
-    fn validate(&self) -> ProgramResult {
+    fn validate(&self) -> Result<()> {
         self.common.validate()?;
         assert_keys_eq!(self.burner, self.burned_cash_source.owner);
         assert_keys_eq!(self.burned_cash_source.mint, self.common.crate_mint);

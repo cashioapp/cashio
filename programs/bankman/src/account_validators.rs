@@ -18,7 +18,7 @@ macro_rules! assert_is_bankman {
 }
 
 impl<'info> Validate<'info> for NewBank<'info> {
-    fn validate(&self) -> ProgramResult {
+    fn validate(&self) -> Result<()> {
         // brrr_issue_authority does not need to be validated because
         // the Bank is created once
         // burn_withdraw_authority does not need to be validated because
@@ -34,28 +34,28 @@ impl<'info> Validate<'info> for NewBank<'info> {
 }
 
 impl<'info> Validate<'info> for AuthorizeCollateral<'info> {
-    fn validate(&self) -> ProgramResult {
+    fn validate(&self) -> Result<()> {
         assert_is_curator!(self);
         Ok(())
     }
 }
 
 impl<'info> Validate<'info> for SetCurator<'info> {
-    fn validate(&self) -> ProgramResult {
+    fn validate(&self) -> Result<()> {
         assert_is_bankman!(self);
         Ok(())
     }
 }
 
 impl<'info> Validate<'info> for SetBankman<'info> {
-    fn validate(&self) -> ProgramResult {
+    fn validate(&self) -> Result<()> {
         assert_is_bankman!(self);
         Ok(())
     }
 }
 
 impl<'info> Validate<'info> for SetCollateralHardCap<'info> {
-    fn validate(&self) -> ProgramResult {
+    fn validate(&self) -> Result<()> {
         assert_is_curator!(self);
         assert_keys_eq!(self.collateral.bank, self.bank);
         Ok(())

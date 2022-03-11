@@ -36,7 +36,7 @@ pub mod brrr {
     /// but that LP's virtual price is 1.02, one will receive 1.02 $CASH
     /// for each 1 USDC-USDT LP deposited.
     #[access_control(ctx.accounts.validate())]
-    pub fn print_cash(ctx: Context<PrintCash>, deposit_amount: u64) -> ProgramResult {
+    pub fn print_cash(ctx: Context<PrintCash>, deposit_amount: u64) -> Result<()> {
         actions::print_cash::print_cash(ctx, deposit_amount)
     }
 
@@ -46,7 +46,7 @@ pub mod brrr {
     /// This means that $CASHs's underlying value is the value of its cheapest ("floor")
     /// LP token, minus the burn fee.
     #[access_control(ctx.accounts.validate())]
-    pub fn burn_cash(ctx: Context<BurnCash>, burn_amount: u64) -> ProgramResult {
+    pub fn burn_cash(ctx: Context<BurnCash>, burn_amount: u64) -> Result<()> {
         actions::burn_cash::burn_cash(ctx, burn_amount)
     }
 }
@@ -85,6 +85,7 @@ pub struct PrintCash<'info> {
     pub mint_destination: Box<Account<'info, TokenAccount>>,
 
     /// The [ISSUE_AUTHORITY_ADDRESS].
+    /// CHECK: this is handled by Vipers.
     pub issue_authority: UncheckedAccount<'info>,
 }
 
@@ -144,11 +145,12 @@ pub struct BurnCash<'info> {
     pub protocol_fee_destination: Account<'info, TokenAccount>,
 
     /// The [WITHDRAW_AUTHORITY_ADDRESS].
+    /// CHECK: this is handled by Vipers.
     pub withdraw_authority: UncheckedAccount<'info>,
 }
 
 /// Errors.
-#[error]
+#[error_code]
 pub enum ErrorCode {
     #[msg("Too many of this LP token are being used as collateral.")]
     CollateralHardCapHit,

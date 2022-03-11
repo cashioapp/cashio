@@ -9,9 +9,9 @@ use vipers::{assert_keys_eq, validate::Validate};
 use crate::SaberSwapAccounts;
 
 impl<'info> TryFrom<&SaberSwapAccounts<'info>> for CashSwap {
-    type Error = ProgramError;
+    type Error = anchor_lang::error::Error;
 
-    fn try_from(accounts: &SaberSwapAccounts<'info>) -> Result<Self, Self::Error> {
+    fn try_from(accounts: &SaberSwapAccounts<'info>) -> Result<Self> {
         Ok(Self {
             lp_mint_decimals: accounts.pool_mint.decimals,
             saber: SaberSwap {
@@ -30,7 +30,7 @@ impl<'info> TryFrom<&SaberSwapAccounts<'info>> for CashSwap {
 }
 
 impl<'info> Validate<'info> for SaberSwapAccounts<'info> {
-    fn validate(&self) -> ProgramResult {
+    fn validate(&self) -> Result<()> {
         assert_keys_eq!(self.arrow.vendor_miner.mint, self.pool_mint);
         assert_keys_eq!(self.saber_swap.pool_mint, self.pool_mint);
         assert_keys_eq!(self.saber_swap.token_a.reserves, self.reserve_a);

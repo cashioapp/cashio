@@ -8,7 +8,7 @@ pub(crate) mod burn_cash;
 pub(crate) mod print_cash;
 
 impl<'info> Validate<'info> for BrrrCommon<'info> {
-    fn validate(&self) -> ProgramResult {
+    fn validate(&self) -> Result<()> {
         assert_keys_eq!(self.bank, self.collateral.bank);
         assert_keys_eq!(self.crate_token, self.crate_collateral_tokens.owner);
         assert_keys_eq!(self.crate_mint, self.crate_token.mint);
