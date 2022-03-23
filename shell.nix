@@ -1,5 +1,6 @@
 { pkgs }:
-pkgs.mkShell {
+pkgs.stdenvNoCC.mkDerivation {
+  name = "devenv";
   buildInputs = with pkgs; [
     (import ./ci.nix { inherit pkgs; })
     rustup

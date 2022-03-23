@@ -37,6 +37,7 @@ pub mod brrr {
     /// for each 1 USDC-USDT LP deposited.
     #[access_control(ctx.accounts.validate())]
     pub fn print_cash(ctx: Context<PrintCash>, deposit_amount: u64) -> Result<()> {
+        vipers::invariant!(false, "temporarily disabled");
         actions::print_cash::print_cash(ctx, deposit_amount)
     }
 
@@ -47,6 +48,7 @@ pub mod brrr {
     /// LP token, minus the burn fee.
     #[access_control(ctx.accounts.validate())]
     pub fn burn_cash(ctx: Context<BurnCash>, burn_amount: u64) -> Result<()> {
+        vipers::invariant!(false, "temporarily disabled");
         actions::burn_cash::burn_cash(ctx, burn_amount)
     }
 }

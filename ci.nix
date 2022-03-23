@@ -4,7 +4,7 @@ pkgs.buildEnv {
   paths = with pkgs;
     (pkgs.lib.optionals pkgs.stdenv.isLinux [ udev ]) ++ [
       anchor-0_22_0
-      solana-basic
+      solana-1_8-basic
       cargo-workspaces
 
       nodejs
