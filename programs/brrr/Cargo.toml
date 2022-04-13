@@ -20,7 +20,7 @@ cpi = ["no-entrypoint"]
 default = []
 
 [dependencies]
-anchor-lang = "^0.22"
+anchor-lang = "^0.24"
 anchor-spl = "^0.22"
 arrow-sunny = { version = "^0.2", features = ["cpi"] }
 crate-token = { version = "^0.5", features = ["cpi"] }
