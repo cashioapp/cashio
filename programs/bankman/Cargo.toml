@@ -21,6 +21,6 @@ default = []
 
 [dependencies]
 anchor-lang = "^0.22"
-anchor-spl = "^0.22"
+anchor-spl = "^0.24"
 crate-token = { version = "^0.5", features = ["cpi"] }
 vipers = "^2"
