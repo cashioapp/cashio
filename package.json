@@ -1,6 +1,6 @@
 {
   "name": "@cashio/cashio",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "cashio is a decentralized stablecoin made for the people, by the people.",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
