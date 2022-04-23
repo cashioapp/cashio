@@ -1,6 +1,6 @@
 [package]
 name = "brrr"
-version = "0.2.1"
+version = "0.2.2"
 description = "Handles the printing and burning of $CASH, using Saber LP Arrows as collateral."
 edition = "2021"
 homepage = "https://cashio.app"
