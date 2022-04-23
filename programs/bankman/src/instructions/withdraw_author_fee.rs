@@ -25,6 +25,8 @@ pub struct WithdrawAuthorFee<'info> {
 impl<'info> Validate<'info> for WithdrawAuthorFee<'info> {
     fn validate(&self) -> Result<()> {
         assert_keys_neq!(self.author_fees, self.destination);
+        assert_keys_eq!(self.author_fees.owner, self.bank);
+        assert_keys_eq!(self.author_fees.mint, self.collateral.mint);
         Ok(())
     }
 }
