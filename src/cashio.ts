@@ -7,9 +7,10 @@ import {
 } from "@crateprotocol/crate-sdk";
 import type { AccountClient } from "@project-serum/anchor";
 import { Program, Provider as AnchorProvider } from "@project-serum/anchor";
-import type { Provider } from "@saberhq/solana-contrib";
+import type { AugmentedProvider, Provider } from "@saberhq/solana-contrib";
 import {
   SignerWallet,
+  SolanaAugmentedProvider,
   SolanaProvider,
   TransactionEnvelope,
 } from "@saberhq/solana-contrib";
@@ -59,7 +60,10 @@ export class CashioSDK {
    */
   readonly arrow: Arrow;
 
-  constructor(readonly provider: Provider, readonly programs: CashioPrograms) {
+  constructor(
+    readonly provider: AugmentedProvider,
+    readonly programs: CashioPrograms
+  ) {
     this.crate = CrateSDK.init(provider);
     this.arrow = Arrow.init(provider);
   }
@@ -75,7 +79,7 @@ export class CashioSDK {
       provider.wallet,
       provider.opts
     );
-    return new CashioSDK(provider, {
+    return new CashioSDK(new SolanaAugmentedProvider(provider), {
       Brrr: new Program(
         BrrrJSON,
         CASHIO_ADDRESSES.Brrr,
@@ -239,6 +243,50 @@ export class CashioSDK {
           bank: bankKey,
           collateral: collateralKey,
           curator,
+        },
+      }),
+    ]);
+  }
+
+  /**
+   * Helper for withdrawing author fees.
+   * @returns
+   */
+  async withdrawAuthorFees({
+    bankKey,
+    amount,
+    bankman = this.provider.wallet.publicKey,
+    recipient = this.provider.wallet.publicKey,
+  }: {
+    bankKey: PublicKey;
+    amount: TokenAmount;
+    bankman?: PublicKey;
+    recipient?: PublicKey;
+  }): Promise<TransactionEnvelope> {
+    const [collateralKey] = await generateCollateralAddress(
+      bankKey,
+      amount.token.mintAccount,
+      this.programs.Bankman.programId
+    );
+    const authorFees = await getATAAddress({
+      mint: amount.token.mintAccount,
+      owner: bankKey,
+    });
+    const destination = await getOrCreateATA({
+      provider: this.provider,
+      mint: amount.token.mintAccount,
+      owner: recipient,
+    });
+    return this.provider.newTX([
+      destination.instruction,
+      this.programs.Bankman.instruction.withdrawAuthorFee(amount.toU64(), {
+        accounts: {
+          bank: bankKey,
+          bankman,
+          collateral: collateralKey,
+          authorFees,
+          destination: destination.address,
+          tokenProgram: TOKEN_PROGRAM_ID,
         },
       }),
     ]);
