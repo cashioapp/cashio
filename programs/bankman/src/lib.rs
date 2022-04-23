@@ -158,8 +158,8 @@ pub mod bankman {
 
     /// Withdraws the author fee to the specified location.
     #[access_control(ctx.accounts.validate())]
-    pub fn withdraw_author_fee(ctx: Context<WithdrawAuthorFee>) -> Result<()> {
-        instructions::withdraw_author_fee::handler(ctx)
+    pub fn withdraw_author_fee(ctx: Context<WithdrawAuthorFee>, amount: u64) -> Result<()> {
+        instructions::withdraw_author_fee::handler(ctx, amount)
     }
 }
 

@@ -29,7 +29,7 @@ impl<'info> Validate<'info> for WithdrawAuthorFee<'info> {
     }
 }
 
-pub fn handler(ctx: Context<WithdrawAuthorFee>) -> Result<()> {
+pub fn handler(ctx: Context<WithdrawAuthorFee>, amount: u64) -> Result<()> {
     let signer_seeds: &[&[&[u8]]] = &[&[
         b"Bank".as_ref(),
         &ctx.accounts.bank.key().to_bytes(),
@@ -45,7 +45,7 @@ pub fn handler(ctx: Context<WithdrawAuthorFee>) -> Result<()> {
             },
         )
         .with_signer(signer_seeds),
-        50,
+        amount,
     )?;
     Ok(())
 }
