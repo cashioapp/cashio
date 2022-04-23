@@ -3,8 +3,8 @@ pkgs.buildEnv {
   name = "ci";
   paths = with pkgs;
     (pkgs.lib.optionals pkgs.stdenv.isLinux [ udev ]) ++ [
-      anchor-0_22_0
-      solana-1_8-basic
+      anchor-0_24_2
+      solana-1_9-basic
       cargo-workspaces
 
       nodejs

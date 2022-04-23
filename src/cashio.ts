@@ -6,7 +6,7 @@ import {
   generateCrateAddress,
 } from "@crateprotocol/crate-sdk";
 import type { AccountClient } from "@project-serum/anchor";
-import { Program, Provider as AnchorProvider } from "@project-serum/anchor";
+import { AnchorProvider, Program } from "@project-serum/anchor";
 import type { AugmentedProvider, Provider } from "@saberhq/solana-contrib";
 import {
   SignerWallet,

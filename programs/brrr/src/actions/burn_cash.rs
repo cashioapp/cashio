@@ -32,7 +32,7 @@ impl<'info> BurnCash<'info> {
                 self.common.token_program.to_account_info(),
                 anchor_spl::token::Burn {
                     mint: self.common.crate_mint.to_account_info(),
-                    to: self.burned_cash_source.to_account_info(),
+                    from: self.burned_cash_source.to_account_info(),
                     authority: self.burner.to_account_info(),
                 },
             ),

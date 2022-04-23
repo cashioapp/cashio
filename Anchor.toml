@@ -1,5 +1,5 @@
-anchor_version = "0.22.1"
-solana_version = "1.9.9"
+anchor_version = "0.24.2"
+solana_version = "1.9.16"
 
 [features]
 seeds = true
@@ -14,29 +14,26 @@ wallet = "tests/fixture-key.json"
 [scripts]
 test = "yarn mocha"
 
-[[test.genesis]]
+[test.validator]
+url = "https://api.mainnet-beta.solana.com"
+
+[[test.validator.clone]]
 address = "CRATwLpu6YZEeiVq9ajjxs61wPQ9f29s1UoQR9siJCRs"
-program = "./artifacts/programs/crate_token.so"
 
-[[test.genesis]]
+[[test.validator.clone]]
 address = "SSwpkEEcbUqx4vtoEByFjSkhKdCT862DNVb52nZg1UZ"
-program = "./artifacts/programs/stable_swap.so"
 
-[[test.genesis]]
+[[test.validator.clone]]
 address = "ARoWLTBWoWrKMvxEiaE2EH9DrWyV7mLpKywGDWxBGeq9"
-program = "./artifacts/programs/arrow_sunny.so"
 
-[[test.genesis]]
+[[test.validator.clone]]
 address = "SPQR4kT3q2oUKEJes2L6NNSBCiPW9SfuhkuqC9bp6Sx"
-program = "./artifacts/programs/sunny.so"
 
-[[test.genesis]]
+[[test.validator.clone]]
 address = "QMNeHCGYnLVDn1icRAfQZpjPLBNkfGbSKRB83G5d8KB"
-program = "./artifacts/programs/quarry_mine.so"
 
-[[test.genesis]]
+[[test.validator.clone]]
 address = "QMWoBmAyJLAsA1Lh9ugMTw2gciTihncciphzdNzdZYV"
-program = "./artifacts/programs/quarry_mint_wrapper.so"
 
 [programs.mainnet]
 brrr = "BRRRot6ig147TBU6EGp7TMesmQrwu729CbG6qu2ZUHWm"

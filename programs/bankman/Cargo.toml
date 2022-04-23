@@ -20,7 +20,7 @@ cpi = ["no-entrypoint"]
 default = []
 
 [dependencies]
-anchor-lang = "^0.22"
-anchor-spl = "^0.22"
-crate-token = { version = "^0.5", features = ["cpi"] }
+anchor-lang = "^0.24"
+anchor-spl = "^0.24"
+crate-token = { version = "^0.6", features = ["cpi"] }
 vipers = "^2"

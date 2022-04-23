@@ -1,10 +1,10 @@
-use anchor_lang::prelude::*;
+use anchor_lang::{prelude::*, solana_program::pubkey::PUBKEY_BYTES};
 
 /// 🏦
 ///
 /// Lets users print $CASH or redeem $CASH for its underlying.
 #[account]
-#[derive(Debug, Default, PartialEq, Eq)]
+#[derive(Copy, Debug, Default, PartialEq, Eq)]
 pub struct Bank {
     /// The [crate_token::CrateToken].
     pub crate_token: Pubkey,
@@ -19,9 +19,13 @@ pub struct Bank {
     pub bankman: Pubkey,
 }
 
+impl Bank {
+    pub const BYTES: usize = PUBKEY_BYTES + 1 + PUBKEY_BYTES * 3;
+}
+
 /// The collateral which has been authorized to mint $CASH.
 #[account]
-#[derive(Debug, Default, PartialEq, Eq)]
+#[derive(Copy, Debug, Default, PartialEq, Eq)]
 pub struct Collateral {
     /// The [Bank].
     pub bank: Pubkey,
@@ -31,4 +35,8 @@ pub struct Collateral {
     pub bump: u8,
     /// Hard cap on the number of collateral tokens that can be issued from this pool.
     pub hard_cap: u64,
+}
+
+impl Collateral {
+    pub const BYTES: usize = PUBKEY_BYTES * 2 + 1 + 8;
 }

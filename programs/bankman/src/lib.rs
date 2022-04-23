@@ -174,6 +174,7 @@ pub struct NewBank<'info> {
             crate_token.key().to_bytes().as_ref()
         ],
         bump,
+        space = 8 + Bank::BYTES,
         payer = payer
     )]
     pub bank: Account<'info, Bank>,
@@ -223,6 +224,7 @@ pub struct AuthorizeCollateral<'info> {
             mint.key().to_bytes().as_ref()
         ],
         bump,
+        space = 8 + Collateral::BYTES,
         payer = payer
     )]
     pub collateral: Account<'info, Collateral>,
