@@ -4,6 +4,7 @@
 
 mod account_validators;
 mod events;
+mod instructions;
 mod state;
 
 use anchor_lang::prelude::*;
@@ -11,6 +12,7 @@ use anchor_spl::token::Mint;
 use vipers::prelude::*;
 
 pub use events::*;
+use instructions::*;
 pub use state::*;
 
 /// Number of decimals of $CASH.
@@ -152,6 +154,12 @@ pub mod bankman {
         });
 
         Ok(())
+    }
+
+    /// Withdraws the author fee to the specified location.
+    #[access_control(ctx.accounts.validate())]
+    pub fn withdraw_author_fee(ctx: Context<WithdrawAuthorFee>, amount: u64) -> Result<()> {
+        instructions::withdraw_author_fee::handler(ctx, amount)
     }
 }
 
