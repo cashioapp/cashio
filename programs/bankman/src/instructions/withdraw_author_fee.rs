@@ -34,7 +34,7 @@ impl<'info> Validate<'info> for WithdrawAuthorFee<'info> {
 pub fn handler(ctx: Context<WithdrawAuthorFee>, amount: u64) -> Result<()> {
     let signer_seeds: &[&[&[u8]]] = &[&[
         b"Bank".as_ref(),
-        &ctx.accounts.bank.key().to_bytes(),
+        &ctx.accounts.bank.crate_token.to_bytes(),
         &[ctx.accounts.bank.bump],
     ]];
     token::transfer(
