@@ -21,7 +21,7 @@ default = []
 
 [dependencies]
 anchor-lang = "^0.22"
-anchor-spl = "^0.22"
+anchor-spl = "^0.24"
 arrow-sunny = { version = "^0.2", features = ["cpi"] }
 crate-token = { version = "^0.5", features = ["cpi"] }
 stable-swap-anchor = "^1.7"
