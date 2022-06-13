@@ -25,7 +25,7 @@ anchor-spl = "^0.24"
 arrow-sunny = { version = "^0.3", features = ["cpi"] }
 crate-token = { version = "^0.6", features = ["cpi"] }
 stable-swap-anchor = "^1.8"
-static-pubkey = "1.0.2"
+static-pubkey = "1.0.3"
 vipers = "^2"
 bankman = { path = "../bankman", version = "0.3.0", features = ["cpi"] }
 converter = { path = "./converter", version = "0.3.0" }
