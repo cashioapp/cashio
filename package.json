@@ -27,7 +27,7 @@
     "@saberhq/solana-contrib": "^1.12.66",
     "@saberhq/stableswap-sdk": "^1.12.66",
     "@saberhq/token-utils": "^1.12.66",
-    "@saberhq/tsconfig": "^1.12.66",
+    "@saberhq/tsconfig": "^2.0.5",
     "@solana/web3.js": "^1.39.1",
     "@types/bn.js": "^5.1.0",
     "@types/mocha": "^9.1.1",
