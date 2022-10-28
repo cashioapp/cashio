@@ -21,7 +21,7 @@ jobs:
 
       - uses: cachix/install-nix-action@v17
       - name: Setup Cachix
-        uses: cachix/cachix-action@v10
+        uses: cachix/cachix-action@v12
         with:
           name: cash
           extraPullNames: quarry, saber
@@ -65,7 +65,7 @@ jobs:
 
       - uses: cachix/install-nix-action@v17
       - name: Setup Cachix
-        uses: cachix/cachix-action@v10
+        uses: cachix/cachix-action@v12
         with:
           name: cash
           extraPullNames: quarry, saber
@@ -81,7 +81,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: cachix/install-nix-action@v17
       - name: Setup Cachix
-        uses: cachix/cachix-action@v10
+        uses: cachix/cachix-action@v12
         with:
           name: cash
           extraPullNames: quarry, saber
@@ -105,7 +105,7 @@ jobs:
 
       - uses: cachix/install-nix-action@v17
       - name: Setup Cachix
-        uses: cachix/cachix-action@v10
+        uses: cachix/cachix-action@v12
         with:
           name: cash
           extraPullNames: quarry, saber
