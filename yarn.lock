@@ -294,19 +294,19 @@ __metadata:
   linkType: hard
 
 "@saberhq/anchor-contrib@npm:^1.12.66":
-  version: 1.12.66
-  resolution: "@saberhq/anchor-contrib@npm:1.12.66"
+  version: 1.14.11
+  resolution: "@saberhq/anchor-contrib@npm:1.14.11"
   dependencies:
-    "@saberhq/solana-contrib": ^1.12.66
+    "@saberhq/solana-contrib": ^1.14.11
     eventemitter3: ^4.0.7
     lodash.camelcase: ^4.3.0
     lodash.mapvalues: ^4.6.0
     tslib: ^2.4.0
   peerDependencies:
     "@project-serum/anchor": ^0.22 || ^0.23 || ^0.24
-    "@solana/web3.js": ^1.37
+    "@solana/web3.js": ^1.42
     bn.js: ^4 || ^5
-  checksum: 742b3fbd4a9aa66f39de4e041b8c3871889056957bbd91c13c87ec019bda40bd2ea6d043783f19b81883873efe5d05d67a229193cbce13c4b7f54dd3466997d5
+  checksum: 8674bd2014eef4449e895b0d8baf30949c579fd45ae85c60b3ef902c4eee0e9f64068a1d24d7f4f266c2e32b0fec7b130c65c1364a545abfc60dc29a7f67cd04
   languageName: node
   linkType: hard
 
@@ -353,6 +353,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@saberhq/option-utils@npm:^1.14.11":
+  version: 1.14.11
+  resolution: "@saberhq/option-utils@npm:1.14.11"
+  dependencies:
+    tslib: ^2.4.0
+  checksum: b603d37a104bc3ac6e74dc6f25142d2ca945d599289c8a243875db4fd6df5ae2a0506f684a0c4cff2e2ab2e557ec4dccf9216e7584c2fa51a0353ff68b29721a
+  languageName: node
+  linkType: hard
+
 "@saberhq/solana-contrib@npm:^1.12.66":
   version: 1.12.66
   resolution: "@saberhq/solana-contrib@npm:1.12.66"
@@ -368,6 +377,25 @@ __metadata:
     "@solana/web3.js": ^1.37
     bn.js: ^4 || ^5
   checksum: b7f8161462a4e8848e0a8267a97834481fbedc6461ff05ed21652e1c5618a00ac055dd1232437e9e4327eaf41baf0b077bd0a2e576b2af3722a6c7b957c0a562
+  languageName: node
+  linkType: hard
+
+"@saberhq/solana-contrib@npm:^1.14.11":
+  version: 1.14.11
+  resolution: "@saberhq/solana-contrib@npm:1.14.11"
+  dependencies:
+    "@saberhq/option-utils": ^1.14.11
+    "@solana/buffer-layout": ^4.0.0
+    "@types/promise-retry": ^1.1.3
+    "@types/retry": ^0.12.2
+    promise-retry: ^2.0.1
+    retry: ^0.13.1
+    tiny-invariant: ^1.3.1
+    tslib: ^2.4.0
+  peerDependencies:
+    "@solana/web3.js": ^1.42
+    bn.js: ^4 || ^5
+  checksum: 2bc52e268b4724afdf262e7bf4d5d53bc152f52877cce9154dfd1f8f90b0efc147d3caa4a3f45aae2398082b2740199bcdedfd5c6f2da5d3c54f1c7d9a3904d2
   languageName: node
   linkType: hard
 
@@ -668,6 +696,13 @@ __metadata:
   version: 0.12.1
   resolution: "@types/retry@npm:0.12.1"
   checksum: 5f46b2556053655f78262bb33040dc58417c900457cc63ff37d6c35349814471453ef511af0cec76a540c601296cd2b22f64bab1ab649c0dacc0223765ba876c
+  languageName: node
+  linkType: hard
+
+"@types/retry@npm:^0.12.2":
+  version: 0.12.2
+  resolution: "@types/retry@npm:0.12.2"
+  checksum: e5675035717b39ce4f42f339657cae9637cf0c0051cf54314a6a2c44d38d91f6544be9ddc0280587789b6afd056be5d99dbe3e9f4df68c286c36321579b1bf4a
   languageName: node
   linkType: hard
 
@@ -4372,6 +4407,13 @@ resolve@^1.20.0:
   version: 1.2.0
   resolution: "tiny-invariant@npm:1.2.0"
   checksum: e09a718a7c4a499ba592cdac61f015d87427a0867ca07f50c11fd9b623f90cdba18937b515d4a5e4f43dac92370498d7bdaee0d0e7a377a61095e02c4a92eade
+  languageName: node
+  linkType: hard
+
+"tiny-invariant@npm:^1.3.1":
+  version: 1.3.1
+  resolution: "tiny-invariant@npm:1.3.1"
+  checksum: 872dbd1ff20a21303a2fd20ce3a15602cfa7fcf9b228bd694a52e2938224313b5385a1078cb667ed7375d1612194feaca81c4ecbe93121ca1baebe344de4f84c
   languageName: node
   linkType: hard
 
